@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bmi Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div class="container">
+        
+        <div class="div1">
+            <form action="">
+                
+                <label for="">Weight:</label>
+                <input type="text" id="weight" placeholder="Enter  your Weight" required> <br>
+                <label for="">Height:</label>
+                <input type="text" id="height" placeholder="Enter  your Height" required> <br>
+                <button type="submit" id="submit">Check BMI</button>
+            </form>
+        </div>
+        <div class="div2">
+            <h2>Your BMI Value</h2>
+            <h1 id="showValue"></h1>
+            <p id= "para"></p>
+        </div>
+    </div>
+
+     <script>
+         let submitBtn = document.getElementById("submit");
+
+         submitBtn.addEventListener("click", function(e){
+            e.preventDefault();
+
+            let weight = document.getElementById("weight").value;
+            let height = document.getElementById("height").value;
+
+            height = height * 12;
+            height = height * 0.025;
+
+            let newValue = weight / (Math.pow(height,2));
+            let showBmiValue = document.getElementById("showValue").innerText = Math.round(newValue);
+
+
+            let Para= document.getElementById("para");
+
+            if(newValue <18.5){
+
+            para.innerText = `${showBmiValue} is underWeight for your body`;
+
+            }
+           else if(newValue >18.5 && newValue < 24.9){
+
+                para.innerText = `${showBmiValue} is Normal Weight for your body`;
+
+            }
+            else if(newValue >25 && newValue < 29){
+
+                para.innerText = `${showBmiValue} is OverWeight for your body`;
+
+            }
+
+            else {
+                para.innerText = `${showBmiValue} is Obesity for your body`;
+            }
+         });
+
+         
+         
+
+     </script> 
+</body>
+</html>
